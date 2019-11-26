@@ -1,0 +1,36 @@
+import { CloudMusicService } from '../services/cloudmusic.service';
+import { TopSongDto, BannerDto, SongDetailsDto, AlbumDto, AlbumDetailDynamicDto, AlbumSubDto, AlbumSubListDto, ArtistsDto, ArtistsMvDto, ArtistsAlbumDto, ArtistsDescDto, SimiMvDto, SimiUserDto, dailySigninDto, LikeDto, LikeListDto, FmTrashDto, TopAlbumDto, ScrobbleDto, TopArtistsDto, MvAllDto, MvFirstDto } from '../dto/cloudmusic.dto';
+export declare class CloudMusicController {
+    private readonly cloudMusicService;
+    constructor(cloudMusicService: CloudMusicService);
+    topSong(topSongDto: TopSongDto): Promise<any>;
+    banner(bannerDto: BannerDto): Promise<any>;
+    resourceLike(): Promise<void>;
+    songDetails(songDetailsDto: SongDetailsDto): Promise<any>;
+    album(albumDto: AlbumDto): Promise<any>;
+    albumDetailDynamic(albumDetailDynamicDto: AlbumDetailDynamicDto): Promise<any>;
+    albumSub(albumSubDto: AlbumSubDto): Promise<any>;
+    albumSubList(albumSubListDto: AlbumSubListDto): Promise<any>;
+    artists(artistsDto: ArtistsDto): Promise<any>;
+    artistsMv(artistsMvDto: ArtistsMvDto): Promise<any>;
+    artistAlbum(artistsAlbumDto: ArtistsAlbumDto): Promise<any>;
+    artistDesc(artistsDescDto: ArtistsDescDto): Promise<any>;
+    simiArtist(artistsDescDto: ArtistsDescDto): Promise<any>;
+    simiPlaylist(artistsDescDto: ArtistsDescDto): Promise<any>;
+    simiMv(simiMvDto: SimiMvDto): Promise<any>;
+    simiSong(simiSongDto: ArtistsDescDto): Promise<any>;
+    simiUser(simiUserDto: SimiUserDto): Promise<any>;
+    recommendResource(): Promise<any>;
+    recommendSongs(): Promise<any>;
+    personalFm(): Promise<any>;
+    dailySignin(dailySigninDto: dailySigninDto): Promise<any>;
+    like(likeDto: LikeDto): Promise<any>;
+    likeLsit(likeListDto: LikeListDto): Promise<any>;
+    fmTrash(fmTrashDto: FmTrashDto): Promise<any>;
+    topAlbum(topAlbumDto: TopAlbumDto): Promise<any>;
+    albumNewest(): Promise<any>;
+    scrobble(scrobbleDto: ScrobbleDto): Promise<any>;
+    topArtists(topArtistsDto: TopArtistsDto): Promise<any>;
+    mvAll(mvAllDto: MvAllDto): Promise<any>;
+    mvFirst(mvFirstDto: MvFirstDto): Promise<any>;
+}
