@@ -260,11 +260,3 @@ export class CloudMusicController {
   }
 }
 
-/**
-
-  必选参数 : mvid: mv 的 id
-
-  接口地址 : /mv/detail
-
-  调用例子 : /mv/detail?mvid=5436712
- */

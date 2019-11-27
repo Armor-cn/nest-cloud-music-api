@@ -5,7 +5,7 @@ import {
     ArtistsDto, ArtistsMvDto, ArtistsAlbumDto, ArtistsDescDto,
     SimiMvDto, SimiUserDto, LikeDto, LikeListDto, FmTrashDto,
     TopAlbumDto, ScrobbleDto, TopArtistsDto, MvAllDto,
-    MvFirstDto, MvExclusiveRcmd, PersonalizedDto, DailySigninDto, TopMvDto
+    MvFirstDto, MvExclusiveRcmd, PersonalizedDto, DailySigninDto, TopMvDto, TopDetailDto
 } from '../dto/cloudmusic.dto';
 
 @Injectable()
@@ -313,30 +313,30 @@ export class CloudMusicService {
         return res.data;
     }
 
-    async personalizedNewsong(){
+    async personalizedNewsong() {
         const bashApi = this.cloudMusicApi + `personalized/newsong`;
         const res = await this.httpService.get(bashApi).toPromise();
         return res.data;
     }
-    async personalizedDjprogram(){
+    async personalizedDjprogram() {
         const bashApi = this.cloudMusicApi + `personalized/djprogram`;
         const res = await this.httpService.get(bashApi).toPromise();
         return res.data;
     }
 
-    async programRecommend(){
+    async programRecommend() {
         const bashApi = this.cloudMusicApi + `program/recommend`;
         const res = await this.httpService.get(bashApi).toPromise();
         return res.data;
     }
 
-    async personalizedPrivatecontent(){
+    async personalizedPrivatecontent() {
         const bashApi = this.cloudMusicApi + `personalized/privatecontent`;
         const res = await this.httpService.get(bashApi).toPromise();
         return res.data;
     }
 
-    async topMv(topMvDto: TopMvDto){
+    async topMv(topMvDto: TopMvDto) {
         const data = {
             area: topMvDto.area || '',
             limit: topMvDto.limit || 30,
@@ -347,7 +347,12 @@ export class CloudMusicService {
         return await res.data;
     }
 
-    async topDetail(topMvDto){
-
+    async topDetail(topDetailDto: TopDetailDto) {
+        if (!topDetailDto.mvid) {
+            throw new BadRequestException('mvid must be passed ')
+        }
+        const bashApi = encodeURI(this.cloudMusicApi + `mv/detail?mvid=${topDetailDto.mvid}`);
+        const res = await this.httpService.post(bashApi).toPromise();
+        return await res.data;
     }
 }
