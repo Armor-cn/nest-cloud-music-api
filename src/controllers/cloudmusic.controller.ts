@@ -1,7 +1,13 @@
 import { Controller, Inject, Get, Query, HttpStatus } from '@nestjs/common';
 import { CloudMusicService } from '../services/cloudmusic.service';
 import { ApiUseTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
-import { TopSongDto, BannerDto, SongDetailsDto, AlbumDto, AlbumDetailDynamicDto, AlbumSubDto, AlbumSubListDto, ArtistsDto, ArtistsMvDto, ArtistsAlbumDto, ArtistsDescDto, SimiMvDto, SimiUserDto, dailySigninDto, LikeDto, LikeListDto, FmTrashDto, TopAlbumDto, ScrobbleDto, TopArtistsDto, MvAllDto, MvFirstDto } from '../dto/cloudmusic.dto';
+import {
+  TopSongDto, BannerDto, SongDetailsDto, AlbumDto, AlbumDetailDynamicDto,
+  AlbumSubDto, AlbumSubListDto, ArtistsDto, ArtistsMvDto, ArtistsAlbumDto,
+  ArtistsDescDto, SimiMvDto, SimiUserDto, DailySigninDto, LikeDto, LikeListDto,
+  FmTrashDto, TopAlbumDto, ScrobbleDto, TopArtistsDto, MvAllDto, MvFirstDto,
+  MvExclusiveRcmd, PersonalizedDto, TopMvDto, TopDetailDto
+} from '../dto/cloudmusic.dto';
 import { TopSongAttribute } from '../attribute/cloudmusic.attribute';
 
 @ApiUseTags('网易云音乐Api')
@@ -137,7 +143,7 @@ export class CloudMusicController {
 
   @ApiOperation({ title: '签到', description: ' 说明 : 调用此接口 , 传入签到类型 ( 可不传 , 默认安卓端签到 ), 可签到 ( 需要登录 ), 其中安卓端签到可获得 3 点经验 , web/PC 端签到可获得 2 点经验 实例 /daily_signin' })
   @Get('/daily_signin')
-  async dailySignin(@Query() dailySigninDto: dailySigninDto) {
+  async dailySignin(@Query() dailySigninDto: DailySigninDto) {
     return await this.cloudMusicService.dailySignin(dailySigninDto);
   }
 
@@ -194,4 +200,71 @@ export class CloudMusicController {
   async mvFirst(@Query() mvFirstDto: MvFirstDto) {
     return await this.cloudMusicService.mvFirst(mvFirstDto);
   }
+
+  /**
+   * 此接口应该是网易报错 
+   * @param mvExclusiveRcmdDto 
+   */
+  @ApiOperation({ title: '网易出品mv', description: '说明 : 调用此接口 , 可获取网易出品 mv 实例：/mv/exclusive/rcmd?limit=10 ' })
+  @Get('/mv/exclusive/rcmd')
+  async mvExclusiveRcmd(@Query() mvExclusiveRcmdDto: MvExclusiveRcmd) {
+    return await this.cloudMusicService.mvExclusiveRcmd(mvExclusiveRcmdDto);
+  }
+
+  @ApiOperation({ title: '推荐 mv', description: ' 说明 : 调用此接口 , 可获取推荐 mv, 实例： /personalized/mv' })
+  @Get('/personalized/mv')
+  async personalizedMv() {
+    return await this.cloudMusicService.personalizedMv();
+  }
+
+  @ApiOperation({ title: '推荐歌单', description: '说明 : 调用此接口 , 可获取推荐歌单 实例： /personalized?limit=1' })
+  @Get('/personalized')
+  async personalized(@Query() personalizedDto: PersonalizedDto) {
+    return await this.cloudMusicService.personalized(personalizedDto);
+  }
+
+  @ApiOperation({ title: '推荐新音乐', description: '说明 : 调用此接口 , 可获取推荐新音乐 实例： /personalized/newsong' })
+  @Get('/personalized/newsong')
+  async personalizedNewsong() {
+    return await this.cloudMusicService.personalizedNewsong();
+  }
+
+  @ApiOperation({ title: '推荐电台', description: '说明 : 调用此接口 , 可获取推荐电台 实例： /personalized/djprogram' })
+  @Get('/personalized/djprogram')
+  async personalizedDjprogram() {
+    return await this.cloudMusicService.personalizedDjprogram();
+  }
+
+  @ApiOperation({ title: '推荐节目', description: '说明 : 调用此接口 , 可获取推荐电台 实例：/program/recommend' })
+  @Get('/program/recommend')
+  async programRecommend() {
+    return await this.cloudMusicService.programRecommend();
+  }
+
+  @ApiOperation({ title: '独家放送', description: ' 说明 : 调用此接口 , 可获取独家放送 实例：/personalized/privatecontent' })
+  @Get('/personalized/privatecontent')
+  async personalizedPrivatecontent() {
+    return await this.cloudMusicService.personalizedPrivatecontent();
+  }
+
+  @ApiOperation({ title: 'mv 排行', description: '说明 : 调用此接口 , 可获取 mv 排行 实例：/top/mv?limit=10' })
+  @Get('/top/mv')
+  async topMv(@Query() topMvDto: TopMvDto) {
+    return await this.cloudMusicService.topMv(topMvDto);
+  }
+
+  @ApiOperation({ title: '获取 mv 数据', description: '说明 : 调用此接口 , 传入 mvid ( 在搜索音乐的时候传 type=1004 获得 ) , 可获取对应 MV 数据 , 数据包含 mv 名字 , 歌手 , 发布时间 , mv 视频地址等数据 , 其中 mv 视频 网易做了防盗链处理 , 可能不能直接播放 , 需要播放的话需要调用  mv 地址 接口 实例：/top/mv?limit=10' })
+  @Get('/mv/detail')
+  async topDetail(@Query() topDetailDto: TopDetailDto) {
+    return await this.cloudMusicService.topDetail(topDetailDto);
+  }
 }
+
+/**
+
+  必选参数 : mvid: mv 的 id
+
+  接口地址 : /mv/detail
+
+  调用例子 : /mv/detail?mvid=5436712
+ */

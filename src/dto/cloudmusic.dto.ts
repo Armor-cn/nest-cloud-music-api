@@ -10,7 +10,7 @@ export class TopSongDto {
 
 export class CommentMusicDto {
     @ApiModelProperty({ description: '必传参数 : 音乐 id', required: true })
-    id: string
+    id: string;
     @ApiModelProperty({ description: 'limit: 取出评论数量 , 默认为 20', default: 20, required: false })
     limit: number;
     @ApiModelProperty({ description: '偏移数量 , 用于分页 , 如 :( 评论页数 -1)*20, 其中 20 为 limit 的值', required: false, default: 0 })
@@ -21,7 +21,7 @@ export class CommentMusicDto {
 
 export class CommentAlbumDto {
     @ApiModelProperty({ description: '必传参数 : 音乐 id', required: true })
-    id: string
+    id: string;
     @ApiModelProperty({ description: 'limit: 取出评论数量 , 默认为 20', default: 20, required: false })
     limit: number;
     @ApiModelProperty({ description: '偏移数量 , 用于分页 , 如 :( 评论页数 -1)*20, 其中 20 为 limit 的值', required: false, default: 0 })
@@ -30,10 +30,9 @@ export class CommentAlbumDto {
     beforeTime: number;
 }
 
-
 export class CommentPlayListDto {
     @ApiModelProperty({ description: '必传参数 : 音乐 id', required: true })
-    id: string
+    id: string;
     @ApiModelProperty({ description: 'limit: 取出评论数量 , 默认为 20', default: 20, required: false })
     limit: number;
     @ApiModelProperty({ description: '偏移数量 , 用于分页 , 如 :( 评论页数 -1)*20, 其中 20 为 limit 的值', required: false, default: 0 })
@@ -44,7 +43,7 @@ export class CommentPlayListDto {
 
 export class CommentMvDto {
     @ApiModelProperty({ description: '必传参数 : 音乐 id', required: true })
-    id: string
+    id: string;
     @ApiModelProperty({ description: 'limit: 取出评论数量 , 默认为 20', default: 20, required: false })
     limit: number;
     @ApiModelProperty({ description: '偏移数量 , 用于分页 , 如 :( 评论页数 -1)*20, 其中 20 为 limit 的值', required: false, default: 0 })
@@ -53,10 +52,9 @@ export class CommentMvDto {
     beforeTime: number;
 }
 
-
 export class CommentDjDto {
     @ApiModelProperty({ description: '必传参数 : 音乐 id', required: true })
-    id: string
+    id: string;
     @ApiModelProperty({ description: 'limit: 取出评论数量 , 默认为 20', default: 20, required: false })
     limit: number;
     @ApiModelProperty({ description: '偏移数量 , 用于分页 , 如 :( 评论页数 -1)*20, 其中 20 为 limit 的值', required: false, default: 0 })
@@ -94,7 +92,7 @@ export class CommentLikeDto {
     @ApiModelProperty({ description: '必传参数 : 资源 id, 如歌曲 id,mv id', required: true })
     id: string;
     @ApiModelProperty({ description: '评论 id ', required: true })
-    cid: string
+    cid: string;
     @ApiModelProperty({ description: ': 是否点赞 ,1 为点赞 ,0 为取消点赞', required: true })
     t: number;
     @ApiModelProperty({ description: '必传参数 : tpye: 数字 , 资源类型 , 对应歌曲 , mv, 专辑 , 歌单 , 电台, 视频对应以下类型 0: 歌曲, 1: mv, 2: 歌单, 3: 专辑, 4: 电台, 5: 视频, 6: 动态', required: true })
@@ -135,7 +133,6 @@ export class AlbumSubListDto {
     offset: number;
 }
 
-
 export class ArtistsDto {
     @ApiModelProperty({ description: '必选参数 : id: 歌手 id, 可由搜索接口获得', required: true })
     id: string;
@@ -170,10 +167,11 @@ export class SimiUserDto {
     id: string;
 }
 
-export class dailySigninDto {
+export class DailySigninDto {
     @ApiModelProperty({ description: ' type: 签到类型 , 默认 0, 其中 0 为安卓端签到 ,1 为 web/PC 签到', default: 0, required: false })
     type: number;
 }
+
 export class LikeDto {
     @ApiModelProperty({ description: ' 必选参数 : id', required: true })
     id: string;
@@ -214,7 +212,7 @@ export class TopArtistsDto {
 }
 
 export class MvAllDto {
-    @ApiModelProperty({ description: 'area: 地区,可选值为全部,内地,港台,欧美,日本,韩国,不填则为全部 ',required: false, default: '' })
+    @ApiModelProperty({ description: 'area: 地区,可选值为全部,内地,港台,欧美,日本,韩国,不填则为全部 ', required: false, default: '' })
     area: string;
     @ApiModelProperty({ description: 'type: 类型,可选值为全部,官方版,原生,现场版,网易出品,不填则为全部', default: '', required: false })
     type: string;
@@ -232,3 +230,30 @@ export class MvFirstDto {
     @ApiModelProperty({ description: '取出数量 , 默认为 50', required: false, default: 50 })
     limit: number;
 }
+
+export class MvExclusiveRcmd {
+    @ApiModelProperty({ description: 'limit: 取出数量 , 默认为 50', required: false, default: 50 })
+    limit: number;
+    @ApiModelProperty({ description: '偏移数量 , 用于分页 , 如 :( 页数 -1)*30, 其中 30 为 limit 的值 , 默认 为 0', required: false, default: 0 })
+    offset: number;
+}
+
+export class PersonalizedDto {
+    @ApiModelProperty({ description: 'limit: 取出数量 , 默认为 30', required: false, default: 30 })
+    limit: number;
+}
+
+export class TopMvDto{
+    @ApiModelProperty({ description: 'limit: 取出数量 , 默认为 30', required: false, default: 30 })
+    limit: number;
+    @ApiModelProperty({ description: 'area: 地区,可选值为内地,港台,欧美,日本,韩国,不填则为全部', required: false, default: '' })
+    area: string;
+    @ApiModelProperty({ description: '偏移数量 , 用于分页 , 如 :( 页数 -1)*30, 其中 30 为 limit 的值 , 默认 为 0', required: false, default: 0 })
+    offset: number;
+}
+
+export class TopDetailDto {
+    @ApiModelProperty({ description: ' 必选参数 : mvid: mv 的 id', required: true })
+    mvid: string;
+}
+

@@ -13,7 +13,6 @@ export class ErrorsInterceptor implements NestInterceptor {
                 });
             }
             // 捕捉到网易接口报出来的 301 状态码
-            console.log(error);
             if (error.response.data.code === 301) {
                 return Promise.resolve({
                     code: error.response.data.code || null,
