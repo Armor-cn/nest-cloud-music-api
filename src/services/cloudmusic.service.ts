@@ -5,7 +5,7 @@ import {
     ArtistsDto, ArtistsMvDto, ArtistsAlbumDto, ArtistsDescDto,
     SimiMvDto, SimiUserDto, LikeDto, LikeListDto, FmTrashDto,
     TopAlbumDto, ScrobbleDto, TopArtistsDto, MvAllDto,
-    MvFirstDto, MvExclusiveRcmd, PersonalizedDto, DailySigninDto, TopMvDto, TopDetailDto
+    MvFirstDto, MvExclusiveRcmd, PersonalizedDto, DailySigninDto, TopMvDto, TopDetailDto, MvUrlDto, VideoGroupDto, RelatedAllvideoDto
 } from '../dto/cloudmusic.dto';
 
 @Injectable()
@@ -351,8 +351,41 @@ export class CloudMusicService {
         if (!topDetailDto.mvid) {
             throw new BadRequestException('mvid must be passed ')
         }
-        const bashApi = encodeURI(this.cloudMusicApi + `mv/detail?mvid=${topDetailDto.mvid}`);
+        const bashApi = this.cloudMusicApi + `mv/detail?mvid=${topDetailDto.mvid}`;
         const res = await this.httpService.post(bashApi).toPromise();
+        return await res.data;
+    }
+
+    async mvUrl(mvUrlDto: MvUrlDto) {
+        if (!mvUrlDto.id) {
+            throw new BadRequestException(`id must be passed `);
+        }
+        const bashApi = this.cloudMusicApi + `mv/url?id=${mvUrlDto.id}`;
+        const res = await this.httpService.get(bashApi).toPromise();
+        return await res.data;
+    }
+
+    async videoGroupList() {
+        const bashApi = this.cloudMusicApi + `video/group/list`;
+        const res = await this.httpService.get(bashApi).toPromise();
+        return await res.data;
+    }
+
+    async videoGroup(videoGroupDto: VideoGroupDto) {
+        if (!videoGroupDto.id) {
+            throw new BadRequestException(`id must be passed`);
+        }
+        const bashApi = this.cloudMusicApi + `video/group?id=${videoGroupDto.id}`;
+        const res = await this.httpService.get(bashApi).toPromise();
+        return await res.data;
+    }
+
+    async relatedAllvideo(relatedAllvideo: RelatedAllvideoDto) {
+        if (!relatedAllvideo.id) {
+            throw new BadRequestException(`idmust be passed `);
+        }
+        const bashApi = this.cloudMusicApi + `related/allvideo?id=${relatedAllvideo.id}`;
+        const res = await this.httpService.get(bashApi).toPromise();
         return await res.data;
     }
 }

@@ -6,7 +6,7 @@ import {
   AlbumSubDto, AlbumSubListDto, ArtistsDto, ArtistsMvDto, ArtistsAlbumDto,
   ArtistsDescDto, SimiMvDto, SimiUserDto, DailySigninDto, LikeDto, LikeListDto,
   FmTrashDto, TopAlbumDto, ScrobbleDto, TopArtistsDto, MvAllDto, MvFirstDto,
-  MvExclusiveRcmd, PersonalizedDto, TopMvDto, TopDetailDto
+  MvExclusiveRcmd, PersonalizedDto, TopMvDto, TopDetailDto, MvUrlDto, VideoGroupDto, RelatedAllvideoDto
 } from '../dto/cloudmusic.dto';
 import { TopSongAttribute } from '../attribute/cloudmusic.attribute';
 
@@ -253,10 +253,41 @@ export class CloudMusicController {
     return await this.cloudMusicService.topMv(topMvDto);
   }
 
+  /**
+   * 
+   * @param topDetailDto 应该是有问题的
+   */
   @ApiOperation({ title: '获取 mv 数据', description: '说明 : 调用此接口 , 传入 mvid ( 在搜索音乐的时候传 type=1004 获得 ) , 可获取对应 MV 数据 , 数据包含 mv 名字 , 歌手 , 发布时间 , mv 视频地址等数据 , 其中 mv 视频 网易做了防盗链处理 , 可能不能直接播放 , 需要播放的话需要调用  mv 地址 接口 实例：/top/mv?limit=10' })
   @Get('/mv/detail')
   async topDetail(@Query() topDetailDto: TopDetailDto) {
     return await this.cloudMusicService.topDetail(topDetailDto);
   }
-}
 
+  @ApiOperation({ title: 'mv 地址', description: '说明 : 调用此接口 , 传入 mv id,可获取 mv 播放地址 实例：/mv/url?id=5436712' })
+  @Get('/mv/url')
+  async mvUrl(@Query() mvUrlDto: MvUrlDto) {
+    return await this.cloudMusicService.mvUrl(mvUrlDto);
+  }
+
+  /**
+   * 本身借口报错
+   */
+  @ApiOperation({ title: '获取视频标签列表', description: '说明 : 调用此接口 , 可获取视频标签列表, 实例： /video/group/list' })
+  @Get('/video/group/list')
+  async videoGroupList() {
+    return await this.cloudMusicService.videoGroupList();
+  }
+
+  @ApiOperation({ title: '获取视频标签下的视频', description: '说明 : 调用此接口 ,传 入id,可获取到相关的视频,无法分页，每次请求返回内容都不一样，官方桌面软件是打开先请求两次，然后每次滚动到底部的时候再请求一次（需要登录）, 实例： /video/group?id=9104' })
+  @Get('/video/group')
+  async videoGroup(@Query() videoGroupDto: VideoGroupDto) {
+    return await this.cloudMusicService.videoGroup(videoGroupDto);
+  }
+
+  @ApiOperation({ title: '相关视频', description: '说明 : 调用此接口 , 可获取相关视频, 实例： /related/allvideo?id=89ADDE33C0AAE8EC14B99F6750DB954D' })
+  @Get('/related/allvideo')
+  async relatedAllvideo(@Query() relatedAllvideoDto: RelatedAllvideoDto) {
+    return await this.cloudMusicService.relatedAllvideo(relatedAllvideoDto);
+  }
+
+}
