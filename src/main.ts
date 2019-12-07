@@ -17,7 +17,7 @@ console.debug = (...objs: any[]): void => {
     console.log(util.inspect(obj, true, 8, true));
   }
 };
-const port = Number(3088);
+const port = Number(process.env.PORT || 3088);
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const options = new DocumentBuilder()
@@ -27,11 +27,13 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('/api-doc', app, document);
+  // const globalPrefix = 'api';
+  // app.setGlobalPrefix(globalPrefix);
   app.use(BodyParser.urlencoded({ limit: '10mb', extended: false }));
   app.use(BodyParser.json({ limit: '10mb' }));
   app.use(LoggerMiddleware);
   await app.listen(port, () => {
-    console.log(`Listening  at http://localhost:${port}/`);
+    console.log(`Listening  at http://localhost:${port}`);
   });
 }
 bootstrap();
