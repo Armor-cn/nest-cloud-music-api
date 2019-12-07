@@ -24,14 +24,16 @@
     "@nestjs/core": "^6.7.2",
     "@nestjs/platform-express": "^6.7.2",
     "@nestjs/swagger": "^3.1.0",
+    "class-transformer": "^0.2.3",
+    "class-validator": "^0.11.0",
+    "jsonwebtoken": "^8.2.2",
+    "lodash": "^4.17.11",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.0",
     "rxjs": "^6.5.3",
-    "swagger-ui-express": "^4.1.2",
-    "jsonwebtoken": "^8.2.2",
-    "passport": "^0.4.0",
-    "passport-jwt": "^4.0.0",
-    "lodash": "^4.17.11"
+    "swagger-ui-express": "^4.1.2"
   },
   "devDependencies": {
     "@nestjs/cli": "^6.9.0",

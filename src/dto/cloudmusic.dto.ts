@@ -1,4 +1,26 @@
-import { ApiModelProperty } from '@nestjs/swagger';
+import { ApiModelProperty, ApiModelPropertyOptional } from '@nestjs/swagger';
+import { IsNumber, IsIn, IsArray } from 'class-validator';
+import { Type, Transform } from 'class-transformer';
+
+export class BaseQueryDto {
+    @ApiModelProperty({ description: '通用分页-页数', required: false, default: 1 })
+    @IsNumber()
+    @Type(() => Number)
+    readonly page: number = 1;
+
+    @ApiModelProperty({ description: '通用分页-每页数量', required: false, default: 25 })
+    @IsNumber()
+    @Type(() => Number)
+    readonly pageSize: number = 25;
+
+    @ApiModelPropertyOptional({ description: '通用分页-分页模式, 非特殊情况不用传递  默认分页  传递值为no表示不分页' })
+    @IsIn(['no'])
+    readonly pageMode?: string;
+
+    @ApiModelPropertyOptional({ description: `通用排序, 例如[['createdAt', 'desc'],['name', 'asc']]`, type: [String], example: [['name', 'desc']] })
+    @IsArray() @Transform(value => value === '' || value === undefined ? undefined : JSON.parse(value))
+    readonly orderBy?: [string, 'DESC' | 'ASC'][];
+}
 
 /**
  * 网易云音乐Api Dto
