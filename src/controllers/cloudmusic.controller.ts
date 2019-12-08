@@ -2,9 +2,7 @@ import { Controller, Inject, Get, Query, HttpStatus } from '@nestjs/common';
 import { CloudMusicService } from '../services/cloudmusic.service';
 import { ApiUseTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import {
-  TopSongDto, BannerDto, SongDetailsDto, AlbumDto, AlbumDetailDynamicDto,
-  AlbumSubDto, AlbumSubListDto, ArtistsDto, ArtistsMvDto, ArtistsAlbumDto,
-  ArtistsDescDto, SimiMvDto, SimiUserDto, DailySigninDto, LikeDto, LikeListDto,
+  TopSongDto, BannerDto, SongDetailsDto,  DailySigninDto, LikeDto, LikeListDto,
   FmTrashDto, TopAlbumDto, ScrobbleDto, TopArtistsDto, MvAllDto, MvFirstDto,
   MvExclusiveRcmd, PersonalizedDto, TopMvDto, TopDetailDto, MvUrlDto, VideoGroupDto, RelatedAllvideoDto
 } from '../dto/cloudmusic.dto';
@@ -23,7 +21,6 @@ export class CloudMusicController {
     return await this.cloudMusicService.topSong(topSongDto);
   }
 
-
   @ApiOperation({ title: 'banner', description: '说明 : 调用此接口 , 可获取 banner( 轮播图 ) 数据  实例 : /banner, /banner?type=2' })
   @Get('/banner')
   async  banner(@Query() bannerDto: BannerDto) {
@@ -41,71 +38,6 @@ export class CloudMusicController {
     return await this.cloudMusicService.songDetails(songDetailsDto);
   }
 
-  @ApiOperation({ title: '获取歌手单曲', description: '说明 : 调用此接口 , 传入歌手 id, 可获得歌手部分信息和热门歌曲 实例：/artists?id=6452 ' })
-  @Get('/artists')
-  async artists(@Query() artistsDto: ArtistsDto) {
-    return await this.cloudMusicService.artists(artistsDto);
-  }
-
-  @ApiOperation({ title: '获取歌手 mv', description: '说明 : 调用此接口 , 传入歌手 id, 可获得歌手 mv 信息 , 具体 mv 播放地址可调 用/mv传入此接口获得的 mvid 来拿到 , 如 : /artist/mv?id=6452,/mv?mvid=5461064' })
-  @Get('/artists/mv')
-  async artistsMv(@Query() artistsMvDto: ArtistsMvDto) {
-    return await this.cloudMusicService.artistsMv(artistsMvDto);
-  }
-
-  @ApiOperation({ title: '获取歌手专辑', description: ' 说明 : 调用此接口 , 传入歌手 id, 可获得歌手专辑内容， 实例: /artist/album?id=6452&limit=30 ( 周杰伦 )' })
-  @Get('/artist/album')
-  async artistAlbum(@Query() artistsAlbumDto: ArtistsAlbumDto) {
-    return await this.cloudMusicService.artistsAlbum(artistsAlbumDto);
-  }
-
-  @ApiOperation({ title: '获取歌手描述', description: ' 说明 : 调用此接口 , 传入歌手 id, 可获得歌手描述 实例：  /artist/desc?id=6452 ( 周杰伦 )' })
-  @Get('/artist/desc')
-  async artistDesc(@Query() artistsDescDto: ArtistsDescDto) {
-    return await this.cloudMusicService.artistDesc(artistsDescDto);
-  }
-
-  @ApiOperation({ title: '获取相似歌手', description: ' 说明 : 调用此接口 , 传入歌手 id, 可获得相似歌手 (需要登录) 实例： /simi/artist?id=6452 ( 对应和周杰伦相似歌手 )' })
-  @Get('/simi/artist')
-  async simiArtist(@Query() artistsDescDto: ArtistsDescDto) {
-    return await this.cloudMusicService.simiArtist(artistsDescDto);
-  }
-
-  @ApiOperation({ title: '获取相似歌单', description: ' 说明 : 调用此接口 , 传入歌曲 id, 可获得相似歌单 实例： /simi/playlist?id=347230 ( 对应 光辉岁月  相似歌单 )' })
-  @Get('/simi/playlist')
-  async simiPlaylist(@Query() artistsDescDto: ArtistsDescDto) {
-    return await this.cloudMusicService.simiPlaylist(artistsDescDto);
-  }
-
-  @ApiOperation({ title: '相似 mv', description: '说明 : 调用此接口 , 传入 mvid 可获取相似 mv 实例： /simi/mv?mvid=5436712 ' })
-  @Get('/simi/mv')
-  async simiMv(@Query() simiMvDto: SimiMvDto) {
-    return await this.cloudMusicService.simiMv(simiMvDto);
-  }
-
-  @ApiOperation({ title: '获取相似音乐', description: '说明 : 调用此接口 , 传入歌曲 id, 可获得相似歌曲  实例： /simi/song?id=347230' })
-  @Get('/simi/song')
-  async simiSong(@Query() simiSongDto: ArtistsDescDto) {
-    return await this.cloudMusicService.simiSong(simiSongDto);
-  }
-
-  @ApiOperation({ title: '获取最近 5 个听了这首歌的用户', description: '说明 : 调用此接口 , 传入歌曲 id, 最近 5 个听了这首歌的用户 实例/simi/user?id=347230 ( 对应  光辉岁月  相似歌曲 )' })
-  @Get('/simi/user')
-  async simiUser(@Query() simiUserDto: SimiUserDto) {
-    return await this.cloudMusicService.simiUser(simiUserDto);
-  }
-
-  @ApiOperation({ title: '获取每日推荐歌单', description: '说明 : 调用此接口 , 可获得每日推荐歌单 ( 需要登录 )  实例 /recommend/resource ' })
-  @Get('/recommend/resource')
-  async recommendResource() {
-    return await this.cloudMusicService.recommendResource();
-  }
-
-  @ApiOperation({ title: '获取每日推荐歌曲', description: '说明 : 调用此接口 , 可获得每日推荐歌曲 ( 需要登录 ) 实例  /recommend/songs' })
-  @Get('/recommend/songs')
-  async recommendSongs() {
-    return await this.cloudMusicService.recommendSongs();
-  }
 
   @ApiOperation({ title: '私人 FM', description: '说明 : 私人 FM( 需要登录 ) 实例 /personal_fm' })
   @Get('/personal_fm')

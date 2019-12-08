@@ -13,7 +13,7 @@ export class CommentController {
     * 暂时不写
     */
     @ApiOperation({ title: '发送/删除评论', description: '说明 : 调用此接口,可发送评论或者删除评论' })
-    @Get('')
+    @Get()
     async  comment() {
     }
 

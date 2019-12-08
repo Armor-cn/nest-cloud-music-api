@@ -7,9 +7,12 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
 import { ErrorsInterceptor } from './common/error.interceptor';
 import { CommentModule } from './modules/comment.module';
 import { AlbumModule } from './modules/album.module';
+import { ArtistsModule } from './modules/artists.module';
+import { SimiModule } from './modules/simi.module';
+import { RecommendModule } from './modules/recommend.module';
 
 @Module({
-  imports: [CommentModule, AlbumModule, HttpModule.register({
+  imports: [CommentModule, AlbumModule, ArtistsModule, SimiModule, RecommendModule, HttpModule.register({
     timeout: 5000,
     maxRedirects: 5,
   })],

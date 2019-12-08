@@ -8,7 +8,6 @@ import { CommentService } from '../services/comment.service';
     maxRedirects: 5,
   })],
   controllers: [CommentController],
-  providers: [CommentService],
-  exports: [CommentService],
+  providers: [CommentService]
 })
 export class CommentModule { }
