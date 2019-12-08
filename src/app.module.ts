@@ -10,9 +10,11 @@ import { AlbumModule } from './modules/album.module';
 import { ArtistsModule } from './modules/artists.module';
 import { SimiModule } from './modules/simi.module';
 import { RecommendModule } from './modules/recommend.module';
+import { LikeModule } from './modules/like.module';
+import { MvModule } from './modules/mv.module';
 
 @Module({
-  imports: [CommentModule, AlbumModule, ArtistsModule, SimiModule, RecommendModule, HttpModule.register({
+  imports: [CommentModule, MvModule, AlbumModule, ArtistsModule, SimiModule, RecommendModule, LikeModule, HttpModule.register({
     timeout: 5000,
     maxRedirects: 5,
   })],

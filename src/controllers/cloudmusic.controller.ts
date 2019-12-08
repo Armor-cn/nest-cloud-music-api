@@ -51,18 +51,6 @@ export class CloudMusicController {
     return await this.cloudMusicService.dailySignin(dailySigninDto);
   }
 
-  @ApiOperation({ title: '喜欢音乐', description: ' 说明 :  调用此接口 , 传入音乐 id, 可喜欢该音乐 实例  /like?id=347230' })
-  @Get('/like')
-  async like(@Query() likeDto: LikeDto) {
-    return await this.cloudMusicService.like(likeDto);
-  }
-
-  @ApiOperation({ title: '喜欢音乐列表', description: '说明 : 调用此接口 , 传入用户 id, 可获取已喜欢音乐id列表(id数组) (需要登录) 实例：/likelist?uid=32953014' })
-  @Get('/likelist')
-  async  likeLsit(@Query() likeListDto: LikeListDto) {
-    return await this.cloudMusicService.likeList(likeListDto);
-  }
-
   @ApiOperation({ title: '垃圾桶', description: '说明 : 调用此接口 , 传入音乐 id, 可把该音乐从私人 FM 中移除至垃圾桶 (需要登录) 实例：/fm_trash?id=347230' })
   @Get('/fm_trash')
   async  fmTrash(@Query() fmTrashDto: FmTrashDto) {
@@ -89,51 +77,6 @@ export class CloudMusicController {
     return await this.cloudMusicService.topArtists(topArtistsDto);
   }
 
-  @ApiOperation({ title: '全部 mv', description: '说明 : 调用此接口 , 可获取全部 mv 实例：  /mv/all?area=韩国&order=最热&limit=1' })
-  @Get('/mv/all')
-  async mvAll(@Query() mvAllDto: MvAllDto) {
-    return await this.cloudMusicService.mvAll(mvAllDto);
-  }
-
-  @ApiOperation({ title: '最新 mv', description: '说明 : 调用此接口 , 可获取最新 mv 实例: /mv/first?limit=10' })
-  @Get('/mv/first')
-  async mvFirst(@Query() mvFirstDto: MvFirstDto) {
-    return await this.cloudMusicService.mvFirst(mvFirstDto);
-  }
-
-  /**
-   * 此接口应该是网易报错 
-   * @param mvExclusiveRcmdDto 
-   */
-  @ApiOperation({ title: '网易出品mv', description: '说明 : 调用此接口 , 可获取网易出品 mv 实例：/mv/exclusive/rcmd?limit=10 ' })
-  @Get('/mv/exclusive/rcmd')
-  async mvExclusiveRcmd(@Query() mvExclusiveRcmdDto: MvExclusiveRcmd) {
-    return await this.cloudMusicService.mvExclusiveRcmd(mvExclusiveRcmdDto);
-  }
-
-  @ApiOperation({ title: '推荐 mv', description: ' 说明 : 调用此接口 , 可获取推荐 mv, 实例： /personalized/mv' })
-  @Get('/personalized/mv')
-  async personalizedMv() {
-    return await this.cloudMusicService.personalizedMv();
-  }
-
-  @ApiOperation({ title: '推荐歌单', description: '说明 : 调用此接口 , 可获取推荐歌单 实例： /personalized?limit=1' })
-  @Get('/personalized')
-  async personalized(@Query() personalizedDto: PersonalizedDto) {
-    return await this.cloudMusicService.personalized(personalizedDto);
-  }
-
-  @ApiOperation({ title: '推荐新音乐', description: '说明 : 调用此接口 , 可获取推荐新音乐 实例： /personalized/newsong' })
-  @Get('/personalized/newsong')
-  async personalizedNewsong() {
-    return await this.cloudMusicService.personalizedNewsong();
-  }
-
-  @ApiOperation({ title: '推荐电台', description: '说明 : 调用此接口 , 可获取推荐电台 实例： /personalized/djprogram' })
-  @Get('/personalized/djprogram')
-  async personalizedDjprogram() {
-    return await this.cloudMusicService.personalizedDjprogram();
-  }
 
   @ApiOperation({ title: '推荐节目', description: '说明 : 调用此接口 , 可获取推荐电台 实例：/program/recommend' })
   @Get('/program/recommend')

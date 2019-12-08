@@ -59,26 +59,7 @@ export class CloudMusicService {
         return await res.data;
     }
 
-    async like(likeDto: LikeDto) {
-        if (!likeDto.id) {
-            throw new BadRequestException('id must  be passed');
-        }
-        const data = {
-            like: likeDto.like || true
-        };
-        const bashApi = this.cloudMusicApi + `simi/song?id=${likeDto.id}&like=${data.like}`;
-        const res = await this.httpService.get(bashApi).toPromise();
-        return await res.data;
-    }
-
-    async likeList(likeListDto: LikeListDto) {
-        if (!likeListDto.uid) {
-            throw new BadRequestException('uid must be passed');
-        }
-        const bashApi = this.cloudMusicApi + `likelist?uid=${likeListDto.uid}`;
-        const res = await this.httpService.get(bashApi).toPromise();
-        return await res.data;
-    }
+    
 
     async fmTrash(fmTrashDto: FmTrashDto) {
         if (!fmTrashDto.id) {
@@ -120,68 +101,8 @@ export class CloudMusicService {
         const res = await this.httpService.get(bashApi).toPromise();
         return await res.data;
     }
+    
 
-    async mvAll(mvAllDto: MvAllDto) {
-        const data = {
-            area: mvAllDto.area || '全部',
-            type: mvAllDto.type || '全部',
-            order: mvAllDto.order || '上升最快',
-            limit: mvAllDto.limit || 50,
-            offset: mvAllDto.offset || 0,
-        };
-        /**
-         * 需要bashApi中代的中文字符进行转义
-         */
-        const bashApi = encodeURI(this.cloudMusicApi + `mv/all?area=${data.area}&type=${data.type}&order=${data.order}&limit=${data.limit}&offset=${data.offset}`);
-        const res = await this.httpService.post(bashApi).toPromise();
-        return await res.data;
-    }
-
-    async mvFirst(mvFirstDto: MvFirstDto) {
-        const data = {
-            area: mvFirstDto.area || '',
-            limit: mvFirstDto.limit || 50,
-        };
-        const bashApi = encodeURI(this.cloudMusicApi + `mv/first?area=${data.area}&limit=${data.limit}`);
-        const res = await this.httpService.post(bashApi).toPromise();
-        return await res.data;
-    }
-
-    async mvExclusiveRcmd(mvExclusiveRcmd: MvExclusiveRcmd) {
-        const data = {
-            limit: mvExclusiveRcmd.limit || 50,
-            offset: mvExclusiveRcmd.offset || 0,
-        };
-        const bashApi = this.cloudMusicApi + `mv/exclusive/rcmd?limit=${data.limit}&offset=${data.offset}`;
-        const res = await this.httpService.post(bashApi).toPromise();
-        return await res.data;
-    }
-
-    async personalizedMv() {
-        const bashApi = this.cloudMusicApi + `personalized/mv`;
-        const res = await this.httpService.post(bashApi).toPromise();
-        return await res.data;
-    }
-
-    async personalized(personalizedDto: PersonalizedDto) {
-        const data = {
-            limit: personalizedDto.limit || 30,
-        };
-        const bashApi = this.cloudMusicApi + `personalized?limit=${data.limit}`;
-        const res = await this.httpService.post(bashApi).toPromise();
-        return res.data;
-    }
-
-    async personalizedNewsong() {
-        const bashApi = this.cloudMusicApi + `personalized/newsong`;
-        const res = await this.httpService.get(bashApi).toPromise();
-        return res.data;
-    }
-    async personalizedDjprogram() {
-        const bashApi = this.cloudMusicApi + `personalized/djprogram`;
-        const res = await this.httpService.get(bashApi).toPromise();
-        return res.data;
-    }
 
     async programRecommend() {
         const bashApi = this.cloudMusicApi + `program/recommend`;
