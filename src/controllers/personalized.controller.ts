@@ -31,4 +31,10 @@ export class PersonalizedController {
     async personalizedDjprogram() {
         return await this.personalizedService.personalizedDjprogram();
     }
+
+    @ApiOperation({ title: '独家放送', description: ' 说明 : 调用此接口 , 可获取独家放送 实例：/personalized/privatecontent' })
+    @Get('/privatecontent')
+    async personalizedPrivatecontent() {
+        return await this.personalizedService.personalizedPrivatecontent();
+    }
 }

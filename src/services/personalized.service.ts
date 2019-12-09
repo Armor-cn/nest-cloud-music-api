@@ -39,5 +39,11 @@ export class PersonalizedService extends BaseService {
         const res = await this.httpService.post(bashApi).toPromise();
         return await res.data;
     }
+    
+    async personalizedPrivatecontent() {
+        const bashApi = this.cloudMusicApi + `personalized/privatecontent`;
+        const res = await this.httpService.get(bashApi).toPromise();
+        return res.data;
+    }
 
 }

@@ -1,7 +1,7 @@
 import { Controller, Inject, Query, Get } from '@nestjs/common';
 import { MvService } from '../services/mv.service';
 import { ApiUseTags, ApiOperation } from '@nestjs/swagger';
-import { MvExclusiveRcmd, MvFirstDto, MvAllDto } from '../dto/cloudmusic.dto';
+import { MvExclusiveRcmd, MvFirstDto, MvAllDto, TopDetailDto, MvUrlDto } from '../dto/cloudmusic.dto';
 
 @ApiUseTags('MV')
 @Controller('mv')
@@ -30,4 +30,20 @@ export class MvController {
     async mvExclusiveRcmd(@Query() mvExclusiveRcmdDto: MvExclusiveRcmd) {
         return await this.mvService.mvExclusiveRcmd(mvExclusiveRcmdDto);
     }
+
+    /**
+   * 
+   * @param topDetailDto 应该是有问题的
+   */
+  @ApiOperation({ title: '获取 mv 数据', description: '说明 : 调用此接口 , 传入 mvid ( 在搜索音乐的时候传 type=1004 获得 ) , 可获取对应 MV 数据 , 数据包含 mv 名字 , 歌手 , 发布时间 , mv 视频地址等数据 , 其中 mv 视频 网易做了防盗链处理 , 可能不能直接播放 , 需要播放的话需要调用  mv 地址 接口 实例：/top/mv?limit=10' })
+  @Get('/detail')
+  async topDetail(@Query() topDetailDto: TopDetailDto) {
+    return await this.mvService.topDetail(topDetailDto);
+  }
+
+  @ApiOperation({ title: 'mv 地址', description: '说明 : 调用此接口 , 传入 mv id,可获取 mv 播放地址 实例：/mv/url?id=5436712' })
+  @Get('/url')
+  async mvUrl(@Query() mvUrlDto: MvUrlDto) {
+    return await this.mvService.mvUrl(mvUrlDto);
+  }
 }

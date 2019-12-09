@@ -1,6 +1,6 @@
-import { Injectable, Inject, HttpService } from '@nestjs/common';
+import { Injectable, Inject, HttpService, BadRequestException } from '@nestjs/common';
 import { BaseService } from './base.service';
-import { MvAllDto, MvFirstDto, MvExclusiveRcmd } from '../dto/cloudmusic.dto';
+import { MvAllDto, MvFirstDto, MvExclusiveRcmd, MvUrlDto, TopDetailDto } from '../dto/cloudmusic.dto';
 
 @Injectable()
 export class MvService extends BaseService {
@@ -43,4 +43,25 @@ export class MvService extends BaseService {
         const res = await this.httpService.post(bashApi).toPromise();
         return await res.data;
     }
+
+    async topDetail(topDetailDto: TopDetailDto) {
+        if (!topDetailDto.mvid) {
+            throw new BadRequestException('mvid must be passed ')
+        }
+        const bashApi = this.cloudMusicApi + `mv/detail?mvid=${topDetailDto.mvid}`;
+        const res = await this.httpService.post(bashApi).toPromise();
+        return await res.data;
+    }
+
+    async mvUrl(mvUrlDto: MvUrlDto) {
+        if (!mvUrlDto.id) {
+            throw new BadRequestException(`id must be passed `);
+        }
+        const bashApi = this.cloudMusicApi + `mv/url?id=${mvUrlDto.id}`;
+        const res = await this.httpService.get(bashApi).toPromise();
+        return await res.data;
+    }
+
+
+
 }

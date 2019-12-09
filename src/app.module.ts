@@ -12,12 +12,24 @@ import { SimiModule } from './modules/simi.module';
 import { RecommendModule } from './modules/recommend.module';
 import { LikeModule } from './modules/like.module';
 import { MvModule } from './modules/mv.module';
+import { VideoModule } from './modules/video.module';
+import { TopModule } from './modules/top.module';
 
 @Module({
-  imports: [CommentModule, MvModule, AlbumModule, ArtistsModule, SimiModule, RecommendModule, LikeModule, HttpModule.register({
-    timeout: 5000,
-    maxRedirects: 5,
-  })],
+  imports: [
+    TopModule,
+    CommentModule,
+    MvModule,
+    AlbumModule,
+    ArtistsModule,
+    SimiModule,
+    RecommendModule,
+    LikeModule,
+    VideoModule,
+    HttpModule.register({
+      timeout: 5000,
+      maxRedirects: 5,
+    })],
   controllers: [AppController, CloudMusicController],
   providers: [{
     provide: APP_INTERCEPTOR,
