@@ -1,7 +1,7 @@
 import { BaseService } from './base.service';
 import { Inject, HttpService, Injectable, BadRequestException } from '@nestjs/common';
-import { ArtistsDescDto, SimiMvDto, SimiUserDto } from '../dto/cloudmusic.dto';
-
+import {  SimiUserDto, SimiMvDto } from '../dto/simi.dto';
+import { ArtistsDescDto } from '../dto/artists.dto';
 @Injectable()
 export class SimiService extends BaseService {
     constructor(@Inject(HttpService) private readonly httpService: HttpService) {

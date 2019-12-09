@@ -1,7 +1,7 @@
 import { Controller, Inject, Get, Query } from '@nestjs/common';
 import { ApiUseTags, ApiOperation } from '@nestjs/swagger';
-import { AlbumService } from 'src/services/album.service';
-import { AlbumDto, AlbumSubDto, AlbumSubListDto, AlbumDetailDynamicDto } from 'src/dto/cloudmusic.dto';
+import { AlbumService } from '../services/album.service';
+import { AlbumDto, AlbumSubDto, AlbumSubListDto, AlbumDetailDynamicDto } from '../dto/album.dto';
 
 @ApiUseTags('专辑')
 @Controller('album')

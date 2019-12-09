@@ -1,6 +1,6 @@
 import { Controller, Get, Query, Inject } from '@nestjs/common';
 import { ApiUseTags, ApiOperation } from '@nestjs/swagger';
-import { PersonalizedDto } from '../dto/cloudmusic.dto';
+import { PersonalizedDto } from '../dto/personalized.dto';
 import { PersonalizedService } from '../services/personalized.service';
 
 @ApiUseTags('推荐')

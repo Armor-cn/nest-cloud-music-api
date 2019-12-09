@@ -1,7 +1,6 @@
-import { Injectable, Inject, HttpService, BadRequestException } from "@nestjs/common";
-import { BaseService } from "./base.service";
-import { AlbumDto, AlbumSubDto, AlbumSubListDto, AlbumDetailDynamicDto } from "../dto/cloudmusic.dto";
-
+import { Injectable, Inject, HttpService, BadRequestException } from '@nestjs/common';
+import { BaseService } from './base.service';
+import { AlbumDto, AlbumSubDto, AlbumSubListDto, AlbumDetailDynamicDto } from '../dto/album.dto';
 @Injectable()
 export class AlbumService extends BaseService {
     constructor(@Inject(HttpService) private readonly httpService: HttpService) {

@@ -1,7 +1,7 @@
 import { Controller, Inject, Get, Query } from '@nestjs/common';
 import { ApiUseTags, ApiOperation } from '@nestjs/swagger';
-import { LikeService } from 'src/services/like.service';
-import { LikeDto, LikeListDto } from 'src/dto/cloudmusic.dto';
+import { LikeService } from '../services/like.service';
+import { LikeDto, LikeListDto } from '../dto/like.dto';
 
 @ApiUseTags('喜欢')
 @Controller('like')

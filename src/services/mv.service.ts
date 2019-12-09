@@ -1,7 +1,7 @@
 import { Injectable, Inject, HttpService, BadRequestException } from '@nestjs/common';
 import { BaseService } from './base.service';
-import { MvAllDto, MvFirstDto, MvExclusiveRcmd, MvUrlDto, TopDetailDto } from '../dto/cloudmusic.dto';
-
+import { TopDetailDto } from '../dto/cloudmusic.dto';
+import { MvExclusiveRcmd, MvFirstDto, MvAllDto, MvUrlDto } from '../dto/mv.dto';
 @Injectable()
 export class MvService extends BaseService {
     constructor(@Inject(HttpService) private readonly httpService: HttpService) {

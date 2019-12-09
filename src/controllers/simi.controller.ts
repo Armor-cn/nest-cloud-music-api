@@ -1,8 +1,8 @@
 import { Controller, Inject, Get, Query } from '@nestjs/common';
 import { ApiUseTags, ApiOperation } from '@nestjs/swagger';
 import { SimiService } from '../services/simi.service';
-import { ArtistsDescDto, SimiUserDto, SimiMvDto } from '../dto/cloudmusic.dto';
-
+import {  SimiUserDto, SimiMvDto } from '../dto/simi.dto';
+import { ArtistsDescDto } from '../dto/artists.dto';
 @ApiUseTags('相似')
 @Controller('simi')
 export class SimiController {

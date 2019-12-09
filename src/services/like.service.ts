@@ -1,6 +1,6 @@
 import { Injectable, Inject, HttpService, BadRequestException } from '@nestjs/common';
 import { BaseService } from './base.service';
-import { LikeDto, LikeListDto } from 'src/dto/cloudmusic.dto';
+import { LikeDto, LikeListDto } from '../dto/like.dto';
 
 @Injectable()
 export class LikeService extends BaseService {

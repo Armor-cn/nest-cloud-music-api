@@ -1,7 +1,16 @@
 import { Controller, Inject, Get, Query } from '@nestjs/common';
 import { CommentService } from '../services/comment.service';
 import { ApiOperation, ApiUseTags } from '@nestjs/swagger';
-import { CommentMusicDto, CommentAlbumDto, CommentPlayListDto, CommentMvDto, CommentDjDto, CommentVideoDto, CommentHotDto, CommentLikeDto } from '../dto/cloudmusic.dto';
+import {
+    CommentMusicDto,
+    CommentAlbumDto,
+    CommentPlayListDto,
+    CommentMvDto,
+    CommentDjDto,
+    CommentVideoDto,
+    CommentHotDto,
+    CommentLikeDto
+} from '../dto/comment.dto';
 
 @ApiUseTags('评论')
 @Controller('comment')

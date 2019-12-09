@@ -1,7 +1,15 @@
 import { Injectable, HttpService, Inject, BadRequestException } from '@nestjs/common';
 import { BaseService } from './base.service';
-import { CommentMusicDto, CommentAlbumDto, CommentPlayListDto, CommentMvDto, CommentDjDto, CommentVideoDto, CommentHotDto, CommentLikeDto } from '../dto/cloudmusic.dto';
-
+import {
+    CommentMusicDto,
+    CommentAlbumDto,
+    CommentPlayListDto,
+    CommentMvDto,
+    CommentDjDto,
+    CommentVideoDto,
+    CommentHotDto,
+    CommentLikeDto
+} from '../dto/comment.dto';
 @Injectable()
 export class CommentService extends BaseService {
     constructor(@Inject(HttpService) private readonly httpService: HttpService) {

@@ -1,7 +1,7 @@
 import { Controller, Inject, Get, Query } from '@nestjs/common';
 import { ArtistsService } from '../services/artists.service';
 import { ApiUseTags, ApiOperation } from '@nestjs/swagger';
-import { ArtistsDto, ArtistsAlbumDto, ArtistsMvDto, ArtistsDescDto } from '../dto/cloudmusic.dto';
+import { ArtistsDto, ArtistsAlbumDto, ArtistsMvDto, ArtistsDescDto } from '../dto/artists.dto';
 
 @ApiUseTags('歌手')
 @Controller('artists')

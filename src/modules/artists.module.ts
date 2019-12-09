@@ -1,6 +1,6 @@
-import { Module, HttpModule } from "@nestjs/common";
-import { ArtistsController } from "../controllers/artists.controller";
-import { ArtistsService } from "../services/artists.service";
+import { Module, HttpModule } from '@nestjs/common';
+import { ArtistsController } from '../controllers/artists.controller';
+import { ArtistsService } from '../services/artists.service';
 
 @Module({
     imports: [HttpModule.register({

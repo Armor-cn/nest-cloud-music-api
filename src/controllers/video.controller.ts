@@ -1,7 +1,7 @@
 import { Controller, Inject, Get, Query } from '@nestjs/common';
 import { VideoService } from '../services/video.service';
 import { ApiOperation, ApiUseTags } from '@nestjs/swagger';
-import { VideoGroupDto } from '../dto/cloudmusic.dto';
+import { VideoGroupDto } from '../dto/video.dto';
 
 @ApiUseTags('视频')
 @Controller('video')

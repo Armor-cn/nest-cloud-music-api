@@ -1,7 +1,7 @@
 import { Controller, Inject, Get, HttpStatus, Query } from '@nestjs/common';
 import { ApiUseTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { TopService } from 'src/services/top.service';
-import { TopSongDto, TopAlbumDto, TopArtistsDto, TopMvDto } from 'src/dto/cloudmusic.dto';
+import { TopSongDto, TopAlbumDto, TopArtistsDto, TopMvDto } from 'src/dto/top.dto';
 import { TopSongAttribute } from 'src/attribute/cloudmusic.attribute';
 
 @ApiUseTags('top')

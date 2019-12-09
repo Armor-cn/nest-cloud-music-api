@@ -1,6 +1,6 @@
 import { BaseService } from './base.service';
 import { Inject, HttpService, Injectable, BadRequestException } from '@nestjs/common';
-import { ArtistsDto, ArtistsAlbumDto, ArtistsDescDto, ArtistsMvDto } from '../dto/cloudmusic.dto';
+import { ArtistsDto, ArtistsAlbumDto, ArtistsMvDto, ArtistsDescDto } from '../dto/artists.dto';
 
 @Injectable()
 export class ArtistsService extends BaseService {

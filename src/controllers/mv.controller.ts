@@ -1,8 +1,8 @@
 import { Controller, Inject, Query, Get } from '@nestjs/common';
 import { MvService } from '../services/mv.service';
 import { ApiUseTags, ApiOperation } from '@nestjs/swagger';
-import { MvExclusiveRcmd, MvFirstDto, MvAllDto, TopDetailDto, MvUrlDto } from '../dto/cloudmusic.dto';
-
+import { TopDetailDto } from '../dto/cloudmusic.dto';
+import { MvExclusiveRcmd, MvFirstDto, MvAllDto, MvUrlDto } from '../dto/mv.dto';
 @ApiUseTags('MV')
 @Controller('mv')
 export class MvController {

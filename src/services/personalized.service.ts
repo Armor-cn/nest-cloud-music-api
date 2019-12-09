@@ -1,7 +1,6 @@
 import { HttpService, Inject, Injectable } from '@nestjs/common';
 import { BaseService } from './base.service';
-import { PersonalizedDto } from '../dto/cloudmusic.dto';
-
+import { PersonalizedDto } from '../dto/personalized.dto';
 @Injectable()
 export class PersonalizedService extends BaseService {
     constructor(@Inject(HttpService) private readonly httpService: HttpService) {
