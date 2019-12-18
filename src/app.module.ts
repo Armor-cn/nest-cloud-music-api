@@ -14,9 +14,13 @@ import { LikeModule } from './modules/like.module';
 import { MvModule } from './modules/mv.module';
 import { VideoModule } from './modules/video.module';
 import { TopModule } from './modules/top.module';
+import { SearchModule } from './modules/search.module';
+import { CloudMusicModule } from './modules/cloudmusic.module';
 
 @Module({
   imports: [
+    SearchModule,
+    CloudMusicModule,
     TopModule,
     CommentModule,
     MvModule,
@@ -30,10 +34,10 @@ import { TopModule } from './modules/top.module';
       timeout: 5000,
       maxRedirects: 5,
     })],
-  controllers: [AppController, CloudMusicController],
+  controllers: [AppController],
   providers: [{
     provide: APP_INTERCEPTOR,
     useClass: ErrorsInterceptor
-  }, AppService, CloudMusicService],
+  }, AppService],
 })
 export class AppModule { }
