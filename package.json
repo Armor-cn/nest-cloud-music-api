@@ -4,7 +4,7 @@
   "description": "",
   "author": "",
   "license": "MIT",
-  "homepage": "https://armor.github.io/nest-cloud-music-api",
+  "homepage": "https://Armor-cn.github.io/nest-cloud-music-api",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
