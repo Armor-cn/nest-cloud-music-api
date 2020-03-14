@@ -22,8 +22,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const options = new DocumentBuilder()
     .setTitle('网易云Api')
-    .setDescription('Nest 版网易云Api接口')
-    .setVersion('1.0')
+    .setDescription('基于 `Nest 7.0.1 版` 开发网易云Api接口')
+    .setVersion('2.0')
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('/api-doc', app, document);

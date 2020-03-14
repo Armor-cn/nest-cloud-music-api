@@ -1,4 +1,4 @@
-import { ApiModelProperty } from "@nestjs/swagger";
+import { ApiProperty } from "@nestjs/swagger";
 import { BaseQueryDto } from "../dto/cloudmusic.dto";
 import * as lodash from 'lodash';
 export const _ = lodash;
@@ -9,21 +9,21 @@ export namespace Itype {
  *  通用分页
  */
 export class PaginateFormat<T> {
-    @ApiModelProperty({ description: '总共数量', required: true })
+    @ApiProperty({ description: '总共数量', required: true })
     total: number;
-    @ApiModelProperty({ description: 'pageSize 映射', required: true })
+    @ApiProperty({ description: 'pageSize 映射', required: true })
     perPage: number;
-    @ApiModelProperty({ description: '当前页数', required: true })
+    @ApiProperty({ description: '当前页数', required: true })
     currentPage: number;
-    @ApiModelProperty({ description: '起始页数', required: true, default: 1 })
+    @ApiProperty({ description: '起始页数', required: true, default: 1 })
     firstPage: 1;
-    @ApiModelProperty({ description: '最后页数', required: true })
+    @ApiProperty({ description: '最后页数', required: true })
     lastPage: number;
-    @ApiModelProperty({ description: '相当于数据库的 offset', required: true })
+    @ApiProperty({ description: '相当于数据库的 offset', required: true })
     from: number;
-    @ApiModelProperty({ description: '相当于数据库的 offset + pageSize', required: true })
+    @ApiProperty({ description: '相当于数据库的 offset + pageSize', required: true })
     to: number;
-    @ApiModelProperty({ description: '数据们', required: true, isArray: true })
+    @ApiProperty({ description: '数据们', required: true, isArray: true })
     data: T[];
 }
 

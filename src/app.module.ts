@@ -1,8 +1,6 @@
 import { Module, HttpModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CloudMusicController } from './controllers/cloudmusic.controller';
-import { CloudMusicService } from './services/cloudmusic.service';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { ErrorsInterceptor } from './common/error.interceptor';
 import { CommentModule } from './modules/comment.module';
