@@ -3,12 +3,13 @@ import { recommendController } from '../controllers/recommend.controller';
 import { RecommendService } from '../services/recommend.service';
 
 @Module({
-    imports: [HttpModule.register({
-        timeout: 6000,
-        maxRedirects: 5
-    })],
-    controllers: [recommendController],
-    providers: [RecommendService]
+  imports: [
+    HttpModule.register({
+      timeout: 6000,
+      maxRedirects: 5,
+    }),
+  ],
+  controllers: [recommendController],
+  providers: [RecommendService],
 })
-
-export class RecommendModule { }
+export class RecommendModule {}

@@ -21,9 +21,9 @@ export class AlbumController {
         return await this.albumService.albumDetailDynamic(albumDetailDynamicDto);
     }
 
-    /**
-   * 
+  /**
    * @param 网易本身api有bug，接口专辑 id未传递
+   * @param albumSubDto
    */
     @ApiOperation({ summary: '收藏/取消收藏专辑', description: '说明 : 调用此接口,可收藏/取消收藏专辑, 实例：/album/sub?id=xxx&t=1 /album/sub?id=xxx&t=0' })
     @Get('/sub')

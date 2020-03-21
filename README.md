@@ -41,13 +41,13 @@ $ npm install
 
 ```bash
 # development
-$ npm run start
+$ npm run start 
 
 # watch mode
 $ npm run start:dev
 
-# production mode
-$ npm run start:prod
+# pm2 
+$ npm run pm2
 ```
 
 ## Test

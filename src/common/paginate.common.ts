@@ -1,5 +1,5 @@
-import { ApiProperty } from "@nestjs/swagger";
-import { BaseQueryDto } from "../dto/cloudmusic.dto";
+import { ApiProperty } from '@nestjs/swagger';
+import { BaseQueryDto } from '../dto/cloudmusic.dto';
 import * as lodash from 'lodash';
 export const _ = lodash;
 export namespace Itype {

@@ -3,8 +3,8 @@ import { CloudMusicService } from '../services/cloudmusic.service';
 import { CloudMusicController } from '../controllers/cloudmusic.controller';
 
 @Module({
-    imports:[HttpModule.register({maxRedirects:5,timeout:6000})],
-    providers:[ CloudMusicService],
-    controllers: [CloudMusicController]
+  imports: [HttpModule.register({ maxRedirects: 5, timeout: 6000 })],
+  providers: [CloudMusicService],
+  controllers: [CloudMusicController],
 })
-export class CloudMusicModule { }
+export class CloudMusicModule {}

@@ -3,12 +3,13 @@ import { SimiService } from '../services/simi.service';
 import { SimiController } from '../controllers/simi.controller';
 
 @Module({
-    imports: [HttpModule.register({
-        timeout: 6000,
-        maxRedirects: 5
-    })],
-    controllers: [SimiController],
-    providers: [SimiService]
+  imports: [
+    HttpModule.register({
+      timeout: 6000,
+      maxRedirects: 5,
+    }),
+  ],
+  controllers: [SimiController],
+  providers: [SimiService],
 })
-
-export class SimiModule { }
+export class SimiModule {}

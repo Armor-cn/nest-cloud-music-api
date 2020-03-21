@@ -1,12 +1,11 @@
 {
   "name": "nest-cloud-music-api",
-  "version": "0.0.2",
-  "description": "",
+  "version": "2.0.1",
+  "description": "NestJS版 网易云音乐API",
   "author": "Armor",
   "license": "MIT",
   "homepage": "https://Armor-cn.github.io/nest-cloud-music-api",
   "scripts": {
-    "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",

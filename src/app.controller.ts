@@ -5,7 +5,7 @@ import { ApiTags, ApiOperation } from '@nestjs/swagger';
 @ApiTags('Test Api 接口')
 @Controller()
 export class AppController {
-  constructor(@Inject(AppService) private readonly appService: AppService) { }
+  constructor(@Inject(AppService) private readonly appService: AppService) {}
 
   @ApiOperation({ summary: '默认' })
   @Get()

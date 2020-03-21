@@ -61,12 +61,11 @@
         "one-variable-per-declaration": [
             false
         ],
-        "no-return-await": true,
+        "no-return-await": false,
         "no-eval": true
     },
     "rulesDirectory": [
         "./src",
-        "./test",
-        "./migrations"
+        "./test"
     ]
 }
