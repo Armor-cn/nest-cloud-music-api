@@ -1,7 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IModelType } from '../interface/model.interface';
 
-// 暂时先随便设置返回字段
 export class TopSongAttribute {
     @ApiProperty({ description: 'ID', required: true })
     id: string;
