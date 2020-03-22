@@ -31,11 +31,15 @@ import { CloudMusicModule } from './modules/cloudmusic.module';
     HttpModule.register({
       timeout: 5000,
       maxRedirects: 5,
-    })],
+    }),
+  ],
   controllers: [AppController],
-  providers: [{
-    provide: APP_INTERCEPTOR,
-    useClass: ErrorsInterceptor
-  }, AppService],
+  providers: [
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: ErrorsInterceptor,
+    },
+    AppService,
+  ],
 })
-export class AppModule { }
+export class AppModule {}
