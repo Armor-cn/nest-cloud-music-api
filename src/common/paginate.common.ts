@@ -3,7 +3,7 @@ import { BaseQueryDto } from '../dto/cloudmusic.dto';
 import * as lodash from 'lodash';
 export const _ = lodash;
 export namespace Itype {
-    export interface Object { [key: string]: any }
+    export interface Object { [key: string]: any, }
 }
 /**
  *  通用分页
